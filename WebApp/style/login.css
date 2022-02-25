@@ -1,0 +1,48 @@
+<script>
+ .form-container{
+        margin:20px;
+        
+        width:300px;
+      }
+      .branding{
+        width:350px;
+      }
+      input{
+        margin:15px 1px 15px 1px;
+        width:95%;
+        height:30px;
+        padding:2px 2px;
+        border:none;
+        border-bottom:1px solid #878787;
+        
+        
+       
+      }
+      input[type=button]{
+        background-color:#000000;
+        border:1px solid #000000;
+        color:#ffffff;
+        padding:10px;
+        width:80%;
+        border-radius:20px;
+        fot-size:16px;
+        font-width:normal;
+      }
+      input:focus{
+        outline:none;
+        width:96%;
+      }
+      hr{
+        width:10%;
+        height:3px;
+        background-color:#FCA435;
+        border:none;
+      }
+      .quotes{
+        color:#FCA435;
+        font-size:2rem;
+      }
+      .otp_box{
+        display:none;
+      }
+</script>

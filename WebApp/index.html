@@ -1,0 +1,101 @@
+
+<!-- Copyright (c) 2021 Sagar Bisht  -->
+
+<!-- --- ----- ----- --- -- - - - -- - -- - -->
+<!doctype>
+<html>
+  <head>
+     <meta data-rh="true" name="theme-color" content="#000000" />
+     <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@362&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/login.css">
+    <title> WaterLevelMonitor-SignIn</title>
+    <style>
+      body{
+        margin:10px;
+        display:flex;
+         font-family: "Rubik", sans-serif;
+        justify-content:space-around;
+        align-items:center;
+        flex-wrap:wrap;
+        
+      }
+     
+    
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+         <center>
+      <h1>
+        Sign in with UserName
+      </h1>
+  <p>
+        Enter the User Name  and Password associated with your account.
+      </p>
+            <!-- Login -->
+            <input type="text" class="textbox login_box" id="txt_user" name="txt_user" placeholder="UserName" /><br>
+        
+            <input type="Password" class="textbox login_box" id="txt_pwd"  name="txt_pwd" placeholder="Password"/><br>
+        
+            <input type="button" value="LOG IN" name="but_submit" id="but_submit"  class="login_box"/>
+            <small id="message"></small>
+        
+</center> 
+    </div>
+    <div class="branding">
+      <center>
+      <hr>
+      <h3 class="quotes">
+       Good Software,Like wine,takes times!
+      </h3>
+      <small > Developed By <a href="">@SagarBisht</a></small>
+        </center>
+    </div>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var username='';
+      var password='';
+    $("#but_submit").click(function(){
+      $("#message").html("<span style='color:#15c18b;'>Please wait..</span>");
+        username = $("#txt_user").val().trim();
+        password = $("#txt_pwd").val().trim();
+        if(username=='' || password==''){
+          $("#message").html("<span style='color:#red;'>Fill credentials </span>");
+        }
+
+        if( username != "" && password != "" ){
+            //console.log("d");
+            $.ajax({
+                url:'Include/signIn.php',
+                type:'post',
+                data:{user:username,password:password},
+                success:function(response){
+                     //console.log("k");
+                    console.log(response);
+                    var msg = "";
+                    if(response == 1){
+                        window.location = "deshboard.php";
+                    }
+                    else{
+                        msg = "<span style='color:red;'>Invalid Email or Password .</span>";
+                    }
+                    $("#message").html(msg);
+                }
+            });
+          } 
+      
+    });
+
+    });
+
+  </script>
+</html>
